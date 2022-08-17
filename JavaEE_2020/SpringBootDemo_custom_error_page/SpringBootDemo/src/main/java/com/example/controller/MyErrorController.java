@@ -9,25 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class MyErrorController implements ErrorController
-{
+public class MyErrorController implements ErrorController {
 
 	@RequestMapping(value = "/error")
-	public ModelAndView handleError(HttpServletResponse response)
-	{
+	public ModelAndView handleError(HttpServletResponse response) {
 		ModelAndView modelAndView = new ModelAndView();
 
-		if (response.getStatus() == HttpStatus.NOT_FOUND.value())
-		{
+		if (response.getStatus() == HttpStatus.NOT_FOUND.value()) {
 			modelAndView.setViewName("error_404.html");
 		}
 
-		else if (response.getStatus() == HttpStatus.INTERNAL_SERVER_ERROR.value())
-		{
+		else if (response.getStatus() == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
 			modelAndView.setViewName("error_500.html");
 		}
-		else
-		{
+		else {
 			modelAndView.setViewName("error.html");
 		}
 
@@ -35,8 +30,7 @@ public class MyErrorController implements ErrorController
 	}
 
 	@Override
-	public String getErrorPath()
-	{
+	public String getErrorPath() {
 		return "/error";
 	}
 }
